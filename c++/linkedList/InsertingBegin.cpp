@@ -37,6 +37,28 @@ void deletingNode(node* head){
 
 
 }
+int lengthofLinkdedList(node* head){
+    node* current=head;
+    int count=0;
+    while(current!=nullptr){
+        count++;
+        current=current->next;
+
+    }
+    return count;
+}
+bool searchElement(node* head,int ele){
+    node* current=head;
+    while(current!=nullptr){
+        if(current->data==ele){
+            return true;
+        }
+        current=current->next;
+
+    }
+    return false;
+    
+}
 int main()
 {
     node *n1 = new node(1);
@@ -49,6 +71,8 @@ int main()
     printlinkedList(newhead);
     deletingNode(newhead);
     printlinkedList(newhead);
+    cout<<"The length of linked list is"<<lengthofLinkdedList(newhead);
+    cout<<"The element 5 is "<<searchElement(newhead,2);
 
 
 
