@@ -26,6 +26,17 @@ void printlinkedList(node* head){
     }
     cout<<"NULL"<<endl;
 }
+void deletingNode(node* head){
+    node* current=head;
+    while(current->next->next!=nullptr){
+        current=current->next;
+    }
+    node* todelete=current->next;
+    current->next=todelete->next;
+    delete todelete;
+
+
+}
 int main()
 {
     node *n1 = new node(1);
@@ -35,6 +46,8 @@ int main()
     n2->next = n3;
     printlinkedList(n1);
     node* newhead=insertAtBegining(n1);
+    printlinkedList(newhead);
+    deletingNode(newhead);
     printlinkedList(newhead);
 
 
