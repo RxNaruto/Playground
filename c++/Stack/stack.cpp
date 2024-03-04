@@ -1,44 +1,33 @@
 #include<iostream>
 using namespace std;
-int n=100;
 class stack{
+    int size;
     int* arr;
     int top;
-    public:
-    stack(){
-        arr=new int[n];
-        top=-1;
 
-    }
+    public:
+   stack(){
+    top=-1;
+   size=100;
+   arr= new int[size];
+   }
+
    void push(int x){
-    if(top==(n-1)){
-        cout<<"Stack overflow"<<endl;
-        return;
-    }
     top++;
     arr[top]=x;
    }
-   void pop(){
-    if(top==-1){
-        cout<<"The stack is already empty"<<endl;
-        return;
-    }
+   int pop(){
+    int x=arr[top];
     top--;
-
-
+    return x;
    }
    int Top(){
-    if(top==-1){
-        cout<<"The stack is already empty"<<endl;
-        return -1;
-    }
     return arr[top];
-
    }
-   bool empty(){
-    
-    return top==-1;
+   int Size(){
+    return top+1;
    }
+   
 
 
 };
@@ -46,7 +35,14 @@ int main()
 {
     stack s1;
     s1.push(1);
-    cout<<"The topmost element in the stack is "<<s1.Top()<<endl;
+    s1.push(2);
+    s1.push(3);
+    s1.push(4);
+    cout<<"The top most element of stack is"<<s1.Top()<<endl;
+       cout<<"The element deleted from the stack is "<<s1.pop()<<endl;
+       cout<<"The top most element of stack is"<<s1.Top()<<endl;
+       cout<<"The element deleted from the stack is "<<s1.pop()<<endl;
+       cout<<"The size of stack is "<<s1.Size()<<endl;
     
  return 0;
 }
