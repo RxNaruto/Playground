@@ -43,6 +43,9 @@ node* deleteANode(node* head){
     delete todelete;
     return head;
 }
+void reverseADLL(node* head){
+    
+}
 int main()
 {
     node *head = new node(1);
