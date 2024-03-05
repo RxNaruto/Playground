@@ -1,47 +1,40 @@
 #include<iostream>
 using namespace std;
+int n=20;
 class queue{
-
-    int *arr;
+    int* arr;
     int front;
     int back;
-    int size;
-  
-  public:
-
+ public:
     queue(){
-       size=100;
-       front=-1;
-       back=-1;
-       arr=new int[size];
+        arr=new int[n];
+        front=-1;
+        back=-1;
     }
-
-    void push(int x){
-        if(back==size){
-            cout<<"The queue is full"<<endl;
-            return;
+    void push(int val){
+        if(back==(n-1) || front>back){
+            cout<<"The queue is full";
         }
-        back++;
-        arr[back]=x;
         if(front==-1){
             front++;
         }
+        back++;
+        arr[back]=val;
+    }
+    void pop(){
+        if(back==-1 || front>back){
+            cout<<"The queue is empty"<<endl;
+        }
+        front++;
 
     }
-    int top(){
-        return arr[front];
-    }
-    int pop(){
-        if(front==-1){
+    int peek(){
+         if(back==-1 || front>back){
             cout<<"The queue is empty"<<endl;
             return -1;
         }
-        int x=arr[front];
-        front++;
-        return x;
-    }
-    bool empty(){
-       return (front>back || front ==-1);;
+        return arr[front];
+
     }
 
 
@@ -50,13 +43,22 @@ int main()
 {
     queue q1;
     q1.push(1);
-     q1.push(2);
-      q1.push(3);
-       q1.push(4);
-       cout<<"The top most element of queue is"<<q1.top()<<endl;
-       cout<<"The element deleted from the queue is "<<q1.pop()<<endl;
-       cout<<"The top most element of queue is"<<q1.top()<<endl;
-       cout<<"The element deleted from the queue is "<<q1.pop()<<endl;
-       cout<<"The size of queue is "<<q1.empty()<<endl;
+    q1.push(2);
+    q1.push(3);
+    q1.push(4);
+
+    cout<<"The top element in queue is"<<q1.peek()<<endl;
+    q1.pop();
+    cout<<"The top element in queue is"<<q1.peek()<<endl;
+    q1.pop();
+    cout<<"The top element in queue is"<<q1.peek()<<endl;
+    q1.pop();
+    cout<<"The top element in queue is"<<q1.peek()<<endl;
+    q1.pop();
+    cout<<"The top element in queue is"<<q1.peek()<<endl;
+    q1.pop();
+
+
+
  return 0;
 }

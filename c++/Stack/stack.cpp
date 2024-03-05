@@ -1,48 +1,74 @@
 #include<iostream>
 using namespace std;
+int n=10;
 class stack{
-    int size;
     int* arr;
     int top;
 
     public:
-   stack(){
-    top=-1;
-   size=100;
-   arr= new int[size];
-   }
 
-   void push(int x){
+    stack(){
+        
+       top = -1;
+        arr=new int[n];
+    }
+ void push(int val){
+    if(top==(n-1)){
+        cout<<"The stack is full"<<endl;
+        return;
+    }
     top++;
-    arr[top]=x;
-   }
-   int pop(){
-    int x=arr[top];
+    arr[top]=val;
+
+ }
+ void pop(){
+    if(top==-1){
+        cout<<"The stack is empty"<<endl;
+        return;
+    }
     top--;
-    return x;
-   }
-   int Top(){
+
+ }
+ int Top(){
+    if(top==-1){
+        cout<<"The stack is empty"<<endl;
+        return -1;
+    }
     return arr[top];
-   }
-   int Size(){
-    return top+1;
-   }
-   
 
 
+ }
+ int size(){
+    return top;
+ }
+ bool isEmpty(){
+    if(top<0){
+        return true;
+    }
+    return false;
+ }
+
+    
 };
 int main()
 {
-    stack s1;
-    s1.push(1);
-    s1.push(2);
-    s1.push(3);
-    s1.push(4);
-    cout<<"The top most element of stack is"<<s1.Top()<<endl;
-       cout<<"The element deleted from the stack is "<<s1.pop()<<endl;
-       cout<<"The top most element of stack is"<<s1.Top()<<endl;
-       cout<<"The element deleted from the stack is "<<s1.pop()<<endl;
-       cout<<"The size of stack is "<<s1.Size()<<endl;
-    
+    stack q1;
+    q1.push(1);
+    q1.push(2);
+    q1.push(3);
+    q1.push(4);
+    cout<<"The top is "<<q1.Top()<<endl;
+    q1.pop();
+    cout<<"The top is "<<q1.Top()<<endl;
+     q1.pop();
+
+    cout<<"The top is "<<q1.Top()<<endl;
+     q1.pop();
+    cout<<"The top is "<<q1.Top()<<endl;
+     q1.pop();
+     cout<<q1.size()<<endl;
+     cout<<q1.isEmpty();
+
+
  return 0;
 }
